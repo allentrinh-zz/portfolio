@@ -6,11 +6,31 @@
       </router-link>
       <nav>
         <ul class="nav">
-          <li><router-link to="/"><i class="icon ion-ios-home"></i> Home</router-link></li>
-          <li><router-link to="/about"><i class="icon ion-ios-person"></i> About Me</router-link></li>
-          <li><router-link to="/work"><i class="icon ion-ios-paper"></i> Resume</router-link></li>
-          <li><router-link to="/work"><i class="icon ion-ios-code"></i> Work</router-link></li>
-          <li><router-link to="/contact"><i class="icon ion-ios-mail"></i> Contact</router-link></li>
+          <li>
+            <router-link to="/">
+              <i class="icon ion-ios-home"></i> Home
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/about">
+              <i class="icon ion-ios-person"></i> About Me
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/resume">
+              <i class="icon ion-ios-paper"></i> Resume
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/work">
+              <i class="icon ion-ios-code"></i> Work
+            </router-link>
+          </li>
+          <li>
+            <router-link to="/contact">
+              <i class="icon ion-ios-mail"></i> Contact
+            </router-link>
+          </li>
         </ul>
       </nav>
     </div>
@@ -26,21 +46,17 @@
         </div>
       </header>
       <main id="content">
-        <router-view/>
+        <transition name="router-animation" mode="out-in" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" :duration="200">
+          <router-view/>
+        </transition>
       </main>
-      <Footer/>
     </div>
   </div>
 </template>
 
 <script>
-import Footer from '@/components/Footer.vue';
-
 export default {
   name: 'App',
-  components: {
-    Footer,
-  },
   data() {
     return {
       drawerActive: false,
@@ -54,7 +70,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/assets/variables.scss';
 @import '@/assets/mixins.scss';
 
@@ -121,7 +137,7 @@ export default {
   a {
     color: #fff;
     padding: 1em;
-    font-size: 1.15em;;
+    font-size: 1em;;
     line-height: 1;
     display: block;
     font-family: $heading;
