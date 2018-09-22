@@ -13,8 +13,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/variables.scss';
-@import '@/assets/mixins.scss';
+@import '@/assets/styles.scss';
 
 .home {
   height: 100vh;
@@ -42,7 +41,7 @@ export default {
   }
 }
 h1 {
-  font-family: $heading;
+  font-family: $font;
   font-weight: bold;
   font-size: 5em;
   span {

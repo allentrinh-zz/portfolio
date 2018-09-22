@@ -55,24 +55,23 @@
 </template>
 
 <script>
-export default {
-  name: 'App',
-  data() {
-    return {
-      drawerActive: false,
-    };
-  },
-  methods: {
-    toggleDrawer() {
-      this.drawerActive = !this.drawerActive;
+  export default {
+    name: 'App',
+    data() {
+      return {
+        drawerActive: false,
+      };
     },
-  },
-};
+    methods: {
+      toggleDrawer() {
+        this.drawerActive = !this.drawerActive;
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/variables.scss';
-@import '@/assets/mixins.scss';
+@import '@/assets/styles.scss';
 
 .mobile-header {
   background: $color;
@@ -80,7 +79,7 @@ export default {
 }
 
 .mobile-logo {
-  font-family: $heading;
+  font-family: $font;
   text-transform: uppercase;
   color: #fff;
   font-size: 2em;
@@ -115,12 +114,13 @@ export default {
 .navigation-drawer {
   width: 200px;
   height: 100%;
-  background: $color;
+  background: darken($background, 10%);
   position: absolute;
   top: 0;
   left: 0;
-  border-right: 1px solid $color;
+  border-right: 1px solid darken($background, 10%);
   transform: translateX(-100%);
+  z-index: 999;
   @include transition;
   &.open {
     transform: translateX(0);
@@ -137,10 +137,10 @@ export default {
   a {
     color: #fff;
     padding: 1em;
-    font-size: 1em;;
+    font-size: 1em;
     line-height: 1;
     display: block;
-    font-family: $heading;
+    font-family: $font;
     letter-spacing: 1px;
     border-top: 1px solid $primaryColor;
     @include transition;
