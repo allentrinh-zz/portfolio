@@ -2,7 +2,7 @@
   <div id="app">
     <HeaderComponent/>
     <main id="content">
-      <transition name="router-animation" mode="out-in" enter-active-class="animated fadeInUp" leave-active-class="animated fadeOut" :duration="200">
+      <transition name="router-animation" mode="out-in" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" :duration="200">
         <router-view/>
       </transition>
     </main>

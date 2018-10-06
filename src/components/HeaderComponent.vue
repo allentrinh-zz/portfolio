@@ -130,14 +130,34 @@ export default {
   justify-content: flex-end;
   width: 100%;
   li {
-
+    padding: 0 1em;
   }
   a {
     color: #fff;
-    padding: 0 1em;
+    padding: 0.5em 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.85em;
+    position: relative;
+    &:hover {
+      &::before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
+    }
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      background: $primaryColor;
+      visibility: hidden;
+      transform: scaleX(0);
+      @include transition;
+    }
   }
 }
 </style>
