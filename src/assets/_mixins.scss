@@ -1,0 +1,35 @@
+@mixin transition {
+  transition: all 0.2s ease-in;
+}
+
+@mixin btn {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: attr(title);
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    z-index: 0;
+    padding: .375rem .75rem;
+    color: $primaryColor;
+    @include transition;
+  }
+  &:hover {
+    &::before {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+}

@@ -6,7 +6,7 @@
         <div class="col-lg-6">
           <h2>Lorem ipsum</h2>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea numquam, ex maiores rerum nihil inventore totam molestiae laudantium voluptate est ut ipsa repellendus quae voluptatum dolore quidem! Totam, assumenda, ipsum?</p>
-          <a href="#" class="btn">Lorem</a>
+          <a href="#" title="Lorem" class="btn">Lorem</a>
         </div>
         <div class="col-lg-6">
           <ul>
@@ -35,14 +35,4 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/styles.scss';
-
-.about {
-  padding:  4em 0;
-  min-height: 100vh;
-  background: $background;
-}
-h1 {
-  color: $color;
-  font-family: $font;
-}
 </style>
