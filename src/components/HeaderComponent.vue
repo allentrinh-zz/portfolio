@@ -15,7 +15,9 @@
               <li><router-link to="/contact">Contact</router-link></li>
             </ul>
           </nav>
-          <button @click="toggleNav" :class="['mobile-nav-btn is-hidden-desktop', { active: mobileNavActive }]">
+          <button
+            @click="toggleNav"
+            :class="['mobile-nav-btn is-hidden-desktop', { active: mobileNavActive }]">
             <span></span>
             <span></span>
             <span></span>
@@ -29,16 +31,19 @@
 <script>
 export default {
   name: 'HeaderComponent',
+  props: {
+    mobileNavActive: Boolean
+  },
   data() {
     return {
-      mobileNavActive: false
+
     };
   },
   methods: {
-    toggleNav() {
-      console.log('hello');
-      this.mobileNavActive = !this.mobileNavActive;
-    }
+    toggleNav(event) {
+      let isActive = !this.mobileNavActive;
+      this.$emit('mobileNavActive', isActive); // pass mobile nav state back to App.vue
+    },
   },
 };
 </script>

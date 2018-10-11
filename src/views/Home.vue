@@ -18,7 +18,9 @@
             </div>
           </div>
           <ul class="social">
-
+            <li v-for="(socialLink, key) in socialLinks" :key="key">
+              <a :href="socialLink.url" target="_blank"><span class="icon"><i :class="['fa', socialLink.icon ]"></i></span></a>
+            </li>
           </ul>
         </div>
       </div>
@@ -29,6 +31,28 @@
 <script>
 export default {
   name: 'Home',
+  data() {
+    return {
+      socialLinks: {
+        facebook: {
+          url: 'https://facebook.com/allentrinh',
+          icon: 'fa-facebook',
+        },
+        instagram: {
+          url: 'https://instagram.com/allentrinh',
+          icon: 'fa-instagram',
+        },
+        twitter: {
+          url: 'https://twitter.com/allenmtrinh',
+          icon: 'fa-twitter',
+        },
+        github: {
+          url: 'https://github.com/allentrinh',
+          icon: 'fa-github-alt',
+        },
+      },
+    };
+  },
 };
 </script>
 
@@ -97,6 +121,8 @@ export default {
 
 .duped-headings {
   font-family: $heading;
+  font-style: italic;
+  font-weight: 400;
   color: #fff;
   font-size: 2em;
   opacity: 0.15;
@@ -110,6 +136,30 @@ export default {
   }
   @media (min-width: $screen-lg) {
     font-size: 4em;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
+  li {
+    padding: 0 0.25em;
+  }
+  a {
+    padding: 0.65em 0.25em 0.25em;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    display: block;
+    width: 45px;
+    height: 45px;
+    @include transition;
+    &:hover {
+      background: #fff;
+      color: $primaryColor;
+    }
   }
 }
 </style>
