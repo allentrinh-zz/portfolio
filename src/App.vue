@@ -40,6 +40,6 @@ export default {
 @import '@/assets/styles.scss';
 
 #app {
-
+  position: relative;
 }
 </style>
