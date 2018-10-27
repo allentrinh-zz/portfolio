@@ -32,7 +32,7 @@
 export default {
   name: 'HeaderComponent',
   props: {
-    mobileNavActive: Boolean
+    mobileNavActive: Boolean,
   },
   data() {
     return {
@@ -40,8 +40,8 @@ export default {
     };
   },
   methods: {
-    toggleNav(event) {
-      let isActive = !this.mobileNavActive;
+    toggleNav() {
+      const isActive = !this.mobileNavActive;
       this.$emit('mobileNavActive', isActive); // pass mobile nav state back to App.vue
     },
   },
@@ -57,7 +57,7 @@ export default {
   background: linear-gradient(to bottom, rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
   padding: 1em;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;

@@ -1,11 +1,11 @@
 <template>
   <nav id="mobile-navigation" :class="{active: mobileNavActive}">
     <ul class="nav">
-      <li><router-link to="/">Home</router-link></li>
-      <li><router-link to="/about">About</router-link></li>
-      <li><router-link to="/resume">Resumé</router-link></li>
-      <li><router-link to="/work">Work</router-link></li>
-      <li><router-link to="/contact">Contact</router-link></li>
+      <li><router-link to="/" @click.native="toggleNav">Home</router-link></li>
+      <li><router-link to="/about" @click.native="toggleNav">About</router-link></li>
+      <li><router-link to="/resume" @click.native="toggleNav">Resumé</router-link></li>
+      <li><router-link to="/work" @click.native="toggleNav">Work</router-link></li>
+      <li><router-link to="/contact" @click.native="toggleNav">Contact</router-link></li>
     </ul>
   </nav>
 </template>
@@ -16,6 +16,12 @@ export default {
   props: {
     mobileNavActive: Boolean,
   },
+  methods: {
+    toggleNav() {
+      const isActive = !this.mobileNavActive;
+      this.$emit('mobileNavActive', isActive); // pass mobile nav state back to App.vue
+    },
+  },
 };
 </script>
 
@@ -25,11 +31,16 @@ export default {
 #mobile-navigation {
   height: 100vh;
   width: 100%;
-  position: absolute;
+  position: fixed;
   background: fade-out(darken($primaryColor, 30%), 0.15);
   top: 0;
   left: 0;
   z-index: 5;
+  transform: scale(0) translateY(-100%);
+  transition: all 0.4s ease-in-out;
+  &.active {
+    transform: scale(1) translateY(0);
+  }
 }
 
 .nav {

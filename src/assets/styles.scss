@@ -1,6 +1,17 @@
 @import 'mixins';
 @import 'variables';
 
-.btn {
-  @include btn;
+.button {
+  @include button;
+}
+
+a {
+  color: $primaryColor;
+  @include transition;
+  &:hover {
+    color: lighten($primaryColor, 10%);
+  }
+  &:active, &:focus {
+    color: darken($primaryColor, 10%);
+  }
 }

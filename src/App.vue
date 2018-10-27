@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <MobileNavigation :mobileNavActive="mobileNavActive"/>
-    <HeaderComponent :mobileNavActive="mobileNavActive" v-on:mobileNavActive="showMobileNavigation($event)"/>
+    <MobileNavigation :mobileNavActive="mobileNavActive" v-on:mobileNavActive="toggleMobileNavActive($event)"/>
+    <HeaderComponent :mobileNavActive="mobileNavActive" v-on:mobileNavActive="toggleMobileNavActive($event)"/>
     <main id="content">
       <transition name="router-animation" mode="out-in" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut" :duration="200">
         <router-view/>
       </transition>
     </main>
-    <FooterComponent/>
+    <FooterComponent v-if="!isHome"/>
   </div>
 </template>
 
@@ -26,12 +26,22 @@ export default {
   data() {
     return {
       mobileNavActive: false,
+      isHome: Boolean,
     };
   },
   methods: {
-    showMobileNavigation(isActive) {
+    toggleMobileNavActive(isActive) {
       this.mobileNavActive = isActive;
     },
+    checkHome() {
+      this.isHome = this.$route.name === 'home';
+    },
+  },
+  mounted() {
+    this.checkHome();
+  },
+  updated() {
+    this.checkHome();
   },
 };
 </script>

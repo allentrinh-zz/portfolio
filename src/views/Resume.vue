@@ -1,5 +1,25 @@
 <template>
-  <div class="about">
-    <h1>This is an Resume page</h1>
-  </div>
+  <section class="resume">
+    <Hero/>
+  </section>
 </template>
+
+<script>
+import Hero from '@/components/Hero.vue';
+
+export default {
+  name: 'Resume',
+  components: {
+    Hero,
+  },
+  data() {
+    return {
+
+    };
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@import '@/assets/styles.scss';
+</style>

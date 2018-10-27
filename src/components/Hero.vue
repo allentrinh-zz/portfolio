@@ -1,36 +1,34 @@
 <template>
-  <div id="home">
-    <section class="hero has-text-centered is-fullheight" :style="{ backgroundImage: 'url(' + require('../assets/color-cloud.jpg') + ')' }">
-      <div class="lines">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-      <div class="hero-body">
-        <div class="container">
-          <div class="heading-container">
-            <h1 class="title">Learn something</h1>
-            <h2 class="subtitle">Interesting</h2>
-            <div class="duped-headings">
-              <p>Learn something</p>
-              <p>Interesting</p>
-            </div>
-            <SocialLinks/>
+  <section class="hero has-text-centered is-medium" :style="{ backgroundImage: 'url(' + require('../assets/color-cloud.jpg') + ')' }">
+    <div class="lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <div class="hero-body">
+      <div class="container">
+        <div class="heading-container">
+          <h1 class="title">{{ this.$route.name | capitalize }}</h1>
+          <div class="duped-headings">
+            <p>{{ this.$route.name | capitalize }}</p>
           </div>
         </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>
-import SocialLinks from '@/components/SocialLinks.vue';
-
 export default {
-  name: 'Home',
-  components: {
-    SocialLinks,
+  name: 'Hero',
+  props: {
+    heroContent: String,
+  },
+  filters: {
+    capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1)
+    }
   },
 };
 </script>
@@ -79,6 +77,7 @@ export default {
   background-size: cover;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 1px 25px rgba(0, 0, 0, 0.25);
   &::before {
     content: '';
     width: 100%;
@@ -117,9 +116,5 @@ export default {
   @media (min-width: $screen-lg) {
     font-size: 4em;
   }
-}
-
-.social {
-  margin-top: 4em;
 }
 </style>
