@@ -24,9 +24,17 @@ export default {
           url: 'https://twitter.com/allenmtrinh',
           icon: 'fa-twitter',
         },
+        linked: {
+          url: 'https://www.linkedin.com/in/allen-trinh-5b805760/',
+          icon: 'fa-linkedin',
+        },
         github: {
           url: 'https://github.com/allentrinh',
           icon: 'fa-github-alt',
+        },
+        codepen: {
+          url: 'https://codepen.io/allentrinh/',
+          icon: 'fa-codepen',
         },
       },
     };

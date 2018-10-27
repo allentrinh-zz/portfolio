@@ -3,6 +3,7 @@
 }
 
 @mixin button {
+  border-radius: 2px;
   &.is-primary {
     background: $primaryColor;
     &:hover {
