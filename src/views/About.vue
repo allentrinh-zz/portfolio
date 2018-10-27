@@ -70,7 +70,7 @@ export default {
           level: 40,
         },
         {
-          name: 'UI Design',
+          name: 'UI/UX Design',
           level: 70,
         },
       ],

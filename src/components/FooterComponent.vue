@@ -1,7 +1,7 @@
 <template>
   <footer id="footer" class="section has-text-centered">
     <div class="container">
-      <p class="copyright">Allen Trinh {{ copyright }}</p>
+      <p class="copyright">{{ copyright }} Allen Trinh</p>
     </div>
   </footer>
 </template>
