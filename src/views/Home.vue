@@ -1,6 +1,9 @@
 <template>
   <div id="home">
     <section class="hero has-text-centered is-fullheight" :style="{ backgroundImage: 'url(' + require('../assets/color-cloud.jpg') + ')' }">
+      <video autoplay="autoplay" loop="loop" muted="muted" class="video-bg">
+        <source :src="require('../assets/milky-way-glowing-at-night.mp4')">
+      </video>
       <div class="lines">
         <div class="line"></div>
         <div class="line"></div>
@@ -37,6 +40,16 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/styles.scss';
+
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: auto;
+  visibility: visible;
+}
 
 .lines {
   position: absolute;
@@ -117,9 +130,29 @@ export default {
   @media (min-width: $screen-lg) {
     font-size: 4em;
   }
+  p {
+    animation: pulse 5s infinite;
+  }
 }
 
 .social {
   margin-top: 4em;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1.5);
+  }
+  80% {
+    transform: scale(2);
+    opacity: 0;
+    letter-spacing: 15px;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 </style>
