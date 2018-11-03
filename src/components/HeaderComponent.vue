@@ -68,6 +68,9 @@ export default {
   font-size: 2rem;
   font-family: $font;
   color: #fff;
+  &:hover, &:active, &:focus {
+    color: #fff;
+  }
 }
 
 .mobile-nav-btn {

@@ -115,7 +115,7 @@ export default {
     margin-bottom: 0.5em;
     background: #e3e3e3;
     border-radius: 2px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    @include box-shadow;
   }
   span.label {
     border-top-left-radius: 2px;
