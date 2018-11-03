@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <section class="hero has-text-centered is-fullheight" :style="{ backgroundImage: 'url(' + require('../assets/color-cloud.jpg') + ')' }">
-      <video autoplay="autoplay" loop="loop" muted="muted" class="video-bg">
+      <video autoplay="autoplay" loop="loop" muted="muted" class="video-bg" type="mp4">
         <source :src="require('../assets/milky-way-glowing-at-night.mp4')">
       </video>
       <div class="lines">
@@ -35,6 +35,59 @@ export default {
   components: {
     SocialLinks,
   },
+  data() {
+    return {
+      videoRatio: null,
+    };
+  },
+  methods: {
+    resize() {
+      this.setContainerHeight();
+
+      if (this.videoCanPlay()) {
+        this.setVideoSize()
+      }
+    },
+    videoCanPlay() {
+      const video = document.querySelector('.video-bg');
+      return !!video.canPlayType;
+    },
+    setContainerHeight() {
+      const container = document.querySelector('.hero');
+      container.style.height = `${window.innerHeight}px`;
+    },
+    setVideoSize() {
+      const container = document.querySelector('.hero');
+      const video = document.querySelector('.video-bg');
+      let width, height, containerRatio = container.offsetWidth / container.offsetHeight;
+
+      if (containerRatio > this.videoRatio) {
+        width = container.offsetWidth;
+      } else {
+        height = container.offsetHeight;
+      }
+
+      video.style.width = width ? `${width}px` : 'auto';
+      video.style.height = height ? `${height}px` : 'auto';
+    },
+  },
+  mounted() {
+    this.setContainerHeight();
+
+    if (this.videoCanPlay()) {
+      const video = document.querySelector('.video-bg');
+      video.oncanplay = () => {
+        this.videoRatio = video.videoWidth / video.videoHeight;
+        this.setVideoSize();
+        video.style.visibility = 'visible';
+      };
+    }
+
+    window.addEventListener('resize', this.resize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.resize);
+  },
 };
 </script>
 
@@ -45,10 +98,9 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
+  visibility: hidden;
   transform: translate(-50%, -50%);
-  width: 100vw;
-  height: auto;
-  visibility: visible;
+  max-width: none;
 }
 
 .lines {
@@ -143,11 +195,8 @@ export default {
   0% {
     transform: scale(0);
   }
-  40% {
-    transform: scale(1.5);
-  }
-  80% {
-    transform: scale(2);
+  70% {
+    transform: scale(1);
     opacity: 0;
     letter-spacing: 15px;
   }
