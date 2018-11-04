@@ -9,9 +9,9 @@
     <div class="hero-body">
       <div class="container">
         <div class="heading-container">
-          <h1 class="title">{{ this.$route.name | capitalize }}</h1>
+          <h1 class="title">{{ this.$route.name | cleanName | capitalize }}</h1>
           <div class="duped-headings">
-            <p>{{ this.$route.name | capitalize }}</p>
+            <p>{{ this.$route.name | cleanName | capitalize }}</p>
           </div>
         </div>
       </div>
@@ -27,7 +27,13 @@ export default {
   },
   filters: {
     capitalize(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1)
+      return str.toLowerCase()
+        .split(' ')
+        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(' ');
+    },
+    cleanName(str) {
+      return str.replace(/-/g, ' ');
     }
   },
 };
@@ -78,6 +84,10 @@ export default {
   position: relative;
   overflow: hidden;
   box-shadow: 0 1px 25px rgba(0, 0, 0, 0.25);
+  padding: 4em 0;
+  @media (min-width: $screen-sm) {
+    padding: 0;
+  }
   &::before {
     content: '';
     width: 100%;

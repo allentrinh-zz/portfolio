@@ -8,22 +8,23 @@
             @keyup="checkFilled(contactFormValues.name)"
             v-model="contactFormValues.name.value"
             :class="{ 'is-filled': contactFormValues.name.isFilled }">
-          <span>Name</span>
+          <span class="placeholder">Name</span>
         </label>
-        <label>
+        <label :class="{ 'not-valid': !contactFormValues.email.valid }">
           <input type="email" name="email" autocomplete="off"
             @keyup="checkFilled(contactFormValues.email);"
             @blur="validateEmail()"
             v-model="contactFormValues.email.value"
-            :class="{ 'is-filled': contactFormValues.email.isFilled, 'not-valid': !contactFormValues.email.valid }">
-          <span>Email</span>
+            :class="{ 'is-filled': contactFormValues.email.isFilled }">
+          <span class="placeholder">Email</span>
+          <span class="email-error"><i class="fa fa-exclamation-circle"></i> Oops! This email doesn't look valid. Please try again.</span>
         </label>
         <label>
           <textarea name="message" id="message" cols="30" rows="10"
             @keyup="checkFilled(contactFormValues.message)"
             v-model="contactFormValues.message.value"
             :class="{ 'is-filled': contactFormValues.message.isFilled }"></textarea>
-          <span>Message</span>
+          <span class="placeholder">Message</span>
         </label>
         <div class="button-wrapper has-text-right">
           <button type="submit" class="button is-primary">Let's talk! <i class="fa fa-paper-plane"></i></button>
@@ -72,6 +73,7 @@ export default {
       }
     },
     checkFilled(field) {
+      console.log(field);
       if (field.value !== '') {
         field.isFilled = true;
       }
@@ -101,7 +103,7 @@ export default {
 label {
   display: block;
   position: relative;
-  span {
+  span.placeholder {
     position: absolute;
     left: 8px;
     top: 33px;
@@ -120,7 +122,7 @@ input {
   margin-bottom: 0.5em;
   padding: 0.5em;
   &:focus, &:active, &.is-filled {
-    + span {
+    + span.placeholder {
       transform: translate(-8px, -30px);
       opacity: 1;
     }
@@ -138,7 +140,7 @@ textarea {
   padding: 0.5em;
   color: $color;
   &:focus, &:active, &.is-filled {
-    + span {
+    + span.placeholder {
       transform: translate(-8px, -30px);
     }
   }
@@ -151,7 +153,18 @@ button {
 }
 
 .not-valid {
-  box-shadow: 0 0 10px #ff3860;
-  outline: 0;
+  input {
+    box-shadow: 0 0 10px #f00;
+    outline: 0;
+  }
+  .email-error {
+    display: block;
+  }
+}
+
+.email-error {
+  color: #f00;
+  font-size: 0.8em;
+  display: none;
 }
 </style>

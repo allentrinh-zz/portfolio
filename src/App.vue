@@ -36,11 +36,25 @@ export default {
     checkHome() {
       this.isHome = this.$route.name === 'home';
     },
+    isDesktop() {
+      return window.innerWidth > 767;
+    },
+    resize() {
+      if (this.isDesktop()) {
+        this.mobileNavActive = false;
+      }
+    },
   },
   mounted() {
     this.checkHome();
+
+    window.addEventListener('resize', this.resize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.resize);
   },
   updated() {
+    window.scrollTo(0, 0);
     this.checkHome();
   },
 };

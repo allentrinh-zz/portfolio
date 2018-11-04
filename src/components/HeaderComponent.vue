@@ -9,9 +9,7 @@
           <nav class="navbar is-hidden-touch">
             <ul class="nav">
               <li><router-link to="/">Home</router-link></li>
-              <li><router-link to="/about">About</router-link></li>
-              <li><router-link to="/resume">Resumé</router-link></li>
-              <li><router-link to="/work">Work</router-link></li>
+              <li><router-link to="/who-am-i">Who Am I</router-link></li>
               <li><router-link to="/contact">Contact</router-link></li>
             </ul>
           </nav>

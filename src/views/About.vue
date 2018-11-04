@@ -6,10 +6,16 @@
         <div class="columns">
           <div class="column content">
             <h2 class="subtitle is-3">Creative Web Designer &amp; Developer</h2>
-            <p>I'm the Lead Developer at <a href="https://www.resiteonline.com" target="_blank">Resite Online</a> in Virginia Beach, VA. I have an obsession with clean, readable code and find satisfaction in micro animations that bring an application to life.</p>
-            <p>Designing useful tools makes me happy. <router-link to="/contact">Let's find something to work on together</router-link></p>
-            <p><router-link to="/work" class="button is-primary">Check out some of the cool stuff I've done</router-link></p>
-            <p><router-link to="/resume" class="button is-primary">See my resumé</router-link></p>
+            <div class="columns">
+              <div class="column is-4">
+                <img :src="require('../assets/allen-trinh.png')" class="profile-picture" alt="Hi, I'm Allen">
+              </div>
+              <div class="column">
+                <p>Hi! I'm the Lead Developer at <a href="https://www.resiteonline.com" target="_blank">Resite Online</a> in Virginia Beach, VA. I have an obsession with clean, readable code and find satisfaction in micro animations that bring an application to life.</p>
+                <p>Designing useful tools makes me happy. <router-link to="/contact">Let's find something to work on together</router-link></p>
+                <a href="" class="button is-primary pdf-link"><i class="fa fa-file-pdf-o"></i> Download my resumé</a>
+              </div>
+            </div>
           </div>
           <div class="column">
             <ul class="skills">
@@ -19,6 +25,43 @@
                 <span class="skill-level">{{ skill.level }}%</span>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container content">
+        <div class="columns">
+          <div class="column is-one-third">
+            <h2 class="subtitle">Work History</h2>
+            <p>Starting off as a humble web designer, I quickly learned my love for user interface was only bested by my love for useful, functional tools.</p>
+            <p>There is no greater user experience than using a tool that just works!</p>
+            <p>I am currently exploring utilizing Vuejs and Nativescript to build apps.</p>
+          </div>
+          <div class="column">
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container content">
+        <h2 class="subtitle has-text-centered">Recent Work</h2>
+        <div class="columns">
+          <div class="column">
+            <img src="https://placehold.it/400x250" alt="">
+          </div>
+          <div class="column">
+            <img src="https://placehold.it/400x250" alt="">
+          </div>
+          <div class="column">
+            <img src="https://placehold.it/400x250" alt="">
+          </div>
+          <div class="column">
+            <img src="https://placehold.it/400x250" alt="">
+          </div>
+          <div class="column">
+            <img src="https://placehold.it/400x250" alt="">
           </div>
         </div>
       </div>
@@ -60,6 +103,10 @@ export default {
         {
           name: 'Vue',
           level: 65,
+        },
+        {
+          name: 'WordPress',
+          level: 75
         },
         {
           name: 'PhotoShop',
@@ -154,5 +201,16 @@ export default {
     height: 100%;
     transition: width 1s ease-in-out;
   }
+}
+
+.pdf-link {
+  i {
+    margin-right: 8px
+  }
+}
+
+.profile-picture {
+  border-radius: 2px;
+  @include box-shadow;
 }
 </style>

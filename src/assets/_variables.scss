@@ -1,4 +1,5 @@
 $primaryColor: #33658A;
+$complementaryColor: lighten(complement($primaryColor), 20%);
 $color: #0e1c27;
 
 $font: 'Raleway', sans-serif;

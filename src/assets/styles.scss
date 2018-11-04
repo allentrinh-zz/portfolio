@@ -6,13 +6,13 @@
 }
 
 a {
-  color: $primaryColor;
+  color: $complementaryColor;
   @include transition;
   &:hover {
-    color: lighten($primaryColor, 10%);
+    color: lighten($complementaryColor, 10%);
   }
   &:active, &:focus {
-    color: darken($primaryColor, 10%);
+    color: darken($complementaryColor, 10%);
   }
 }
 

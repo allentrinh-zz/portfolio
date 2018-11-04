@@ -45,7 +45,7 @@ export default {
       this.setContainerHeight();
 
       if (this.videoCanPlay()) {
-        this.setVideoSize()
+        this.setVideoSize();
       }
     },
     videoCanPlay() {
@@ -59,7 +59,9 @@ export default {
     setVideoSize() {
       const container = document.querySelector('.hero');
       const video = document.querySelector('.video-bg');
-      let width, height, containerRatio = container.offsetWidth / container.offsetHeight;
+      const containerRatio = container.offsetWidth / container.offsetHeight;
+      let width;
+      let height;
 
       if (containerRatio > this.videoRatio) {
         width = container.offsetWidth;
@@ -165,18 +167,21 @@ export default {
 }
 
 .duped-headings {
+  display: none;
+  width: 100%;
   font-family: $heading;
   font-style: italic;
   font-weight: 400;
   color: #fff;
-  font-size: 2em;
-  opacity: 0.15;
+  font-size: 1.5em;
+  opacity: 0.75;
   line-height: 1;
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%, -25%);
   @media (min-width: $screen-md) {
+    display: block;
     font-size: 3em;
   }
   @media (min-width: $screen-lg) {
@@ -195,7 +200,7 @@ export default {
   0% {
     transform: scale(0);
   }
-  70% {
+  80% {
     transform: scale(1);
     opacity: 0;
     letter-spacing: 15px;

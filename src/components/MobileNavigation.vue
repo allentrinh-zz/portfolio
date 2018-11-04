@@ -2,9 +2,7 @@
   <nav id="mobile-navigation" :class="{active: mobileNavActive}">
     <ul class="nav">
       <li><router-link to="/" @click.native="toggleNav">Home</router-link></li>
-      <li><router-link to="/about" @click.native="toggleNav">About</router-link></li>
-      <li><router-link to="/resume" @click.native="toggleNav">Resumé</router-link></li>
-      <li><router-link to="/work" @click.native="toggleNav">Work</router-link></li>
+      <li><router-link to="/who-am-i" @click.native="toggleNav">Who Am I</router-link></li>
       <li><router-link to="/contact" @click.native="toggleNav">Contact</router-link></li>
     </ul>
   </nav>
@@ -36,10 +34,13 @@ export default {
   top: 0;
   left: 0;
   z-index: 5;
-  transform: scale(0) translateY(-100%);
-  transition: all 0.4s ease-in-out;
+  transform: translate(100%, -100%) scale(0.025);
+  transition: all .5s cubic-bezier(0.76,-0.32, 0.46, 1.39);
+  border-radius: 100%;
   &.active {
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
+    border-radius: 0;
+    transform: scale(1);
   }
 }
 
@@ -48,9 +49,12 @@ export default {
   top: 50%;
   font-size: 3rem;
   transform: translateY(-50%);
+  text-align: center;
+  width: 100%;
   a {
     color: #fff;
     padding: 0.25rem 1rem;
+    font-family: $font;
   }
 }
 </style>
