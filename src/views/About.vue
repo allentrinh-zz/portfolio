@@ -3,9 +3,9 @@
     <Hero/>
     <div class="section">
       <div class="container">
+        <h2 class="subtitle is-3">Creative Web Designer &amp; Developer</h2>
         <div class="columns">
           <div class="column content">
-            <h2 class="subtitle is-3">Creative Web Designer &amp; Developer</h2>
             <div class="columns">
               <div class="column is-4">
                 <img :src="require('../assets/allen-trinh.png')" class="profile-picture" alt="Hi, I'm Allen">
@@ -31,15 +31,16 @@
     </div>
     <div class="section">
       <div class="container content">
+        <h2 class="subtitle">Work History</h2>
         <div class="columns">
-          <div class="column is-one-third">
-            <h2 class="subtitle">Work History</h2>
+          <div class="column is-4">
             <p>Starting off as a humble web designer, I quickly learned my love for user interface was only bested by my love for useful, functional tools.</p>
             <p>There is no greater user experience than using a tool that just works!</p>
             <p>I am currently exploring utilizing Vuejs and Nativescript to build apps.</p>
           </div>
-          <div class="column">
+          <div class="column is-7 is-offset-1">
 
+            <TimeLine/>
           </div>
         </div>
       </div>
@@ -71,11 +72,13 @@
 
 <script>
 import Hero from '@/components/Hero.vue';
+import TimeLine from '@/components/TimeLine.vue';
 
 export default {
   name: 'About',
   components: {
     Hero,
+    TimeLine,
   },
   data() {
     return {
