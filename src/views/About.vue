@@ -19,7 +19,7 @@
           </div>
           <div class="column">
             <ul class="skills">
-              <li v-for="skill in skills" class="skill-bar">
+              <li v-for="(skill, index) in skills" class="skill-bar" :key="index">
                 <span class="fill-bar" :data-skill-level="skill.level"></span>
                 <span class="label">{{ skill.name }}</span>
                 <span class="skill-level">{{ skill.level }}%</span>
@@ -109,7 +109,7 @@ export default {
         },
         {
           name: 'WordPress',
-          level: 75
+          level: 75,
         },
         {
           name: 'PhotoShop',
@@ -130,8 +130,8 @@ export default {
     fillSkillBars() {
       const bars = document.querySelectorAll('.fill-bar');
       let timeOut = 300;
-      bars.forEach(function(bar) {
-        let skillLevel = bar.getAttribute('data-skill-level');
+      bars.forEach((bar) => {
+        const skillLevel = bar.getAttribute('data-skill-level');
         setTimeout(() => bar.setAttribute('style', `width: ${skillLevel}%`), timeOut);
         timeOut += 100;
       });
