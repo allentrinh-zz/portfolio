@@ -4,7 +4,10 @@
       <h4>Introduce yourself</h4>
       <form @submit.prevent="submit" class="contact-form">
         <div class="alert" v-show="contactFormValues.hasErrors">
-          Oops.
+          <p class="has-text-danger">All fields are required. Is something missing?</p>
+        </div>
+        <div class="alert" v-show="contactFormValues.hasSuccess">
+          <p class="has-text-success">Success! I'll be in touch! In the mean time, here's some <router-link to="/blog">light reading.</router-link></p>
         </div>
         <input type="hidden" name="phone" value="0it8hePl4n"
           v-model="contactFormValues.phone.value">
@@ -74,6 +77,7 @@ export default {
         },
         submitted: false,
         hasErrors: false,
+        hasSuccess: false,
       },
     };
   },
@@ -90,13 +94,8 @@ export default {
         axios.post('http://lvh.me/mailer.php', { name, email, message, phone })
           .then((response) => {
             if (response.status === 200) {
-              this.contactFormValues.name.value = '';
-              this.contactFormValues.name.isFilled = false;
-              this.contactFormValues.email.value = '';
-              this.contactFormValues.email.isFilled = false;
-              this.contactFormValues.message.value = '';
-              this.contactFormValues.message.isFilled = false;
-              this.contactFormValues.submitted = false;
+              this.resetForm();
+              this.contactFormValues.hasSuccess = true;
             }
           })
           .catch((error) => {
@@ -104,9 +103,12 @@ export default {
           });
       } else {
         this.contactFormValues.hasErrors = true;
+        this.contactFormValues.submitted = false;
       }
     },
     checkFilled(field) {
+      this.contactFormValues.hasErrors = false;
+      this.contactFormValues.hasSuccess = false;
       if (field.value !== '') {
         field.isFilled = true;
       }
@@ -117,6 +119,15 @@ export default {
     validateEmail() {
       const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       this.contactFormValues.email.valid = re.test(String(this.contactFormValues.email.value).toLowerCase());
+    },
+    resetForm() {
+      this.contactFormValues.name.value = '';
+      this.contactFormValues.name.isFilled = false;
+      this.contactFormValues.email.value = '';
+      this.contactFormValues.email.isFilled = false;
+      this.contactFormValues.message.value = '';
+      this.contactFormValues.message.isFilled = false;
+      this.contactFormValues.submitted = false;
     },
   },
 };
@@ -245,6 +256,13 @@ button {
 .heart span:after {
   top: -14px;
   border-radius: 50% 50% 0 0;
+}
+
+.has-text-success {
+  a {
+    color: lighten(#23d160, 10%);
+    text-decoration: underline;
+  }
 }
 
 @keyframes heartbeat {
