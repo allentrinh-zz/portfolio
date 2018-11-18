@@ -3,6 +3,11 @@
     <div class="form-wrapper content">
       <h4>Introduce yourself</h4>
       <form @submit.prevent="submit" class="contact-form">
+        <div class="alert" v-show="contactFormValues.hasErrors">
+          Oops.
+        </div>
+        <input type="hidden" name="phone" value="0it8hePl4n"
+          v-model="contactFormValues.phone.value">
         <label>
           <input type="text" name="name" autocomplete="off"
             @keyup="checkFilled(contactFormValues.name)"
@@ -17,7 +22,7 @@
             v-model="contactFormValues.email.value"
             :class="{ 'is-filled': contactFormValues.email.isFilled }">
           <span class="placeholder">Email</span>
-          <span class="email-error"><i class="fa fa-exclamation-circle"></i> Oops! This email doesn't look valid. Please try again.</span>
+          <span class="email-error"><i class="fa fa-exclamation-circle"></i> Oops! This needs to be a valid email. Please try again.</span>
         </label>
         <label>
           <textarea name="message" id="message" cols="30" rows="10"
@@ -27,7 +32,14 @@
           <span class="placeholder">Message</span>
         </label>
         <div class="button-wrapper has-text-right">
-          <button type="submit" class="button is-primary">Let's talk! <i class="fa fa-paper-plane"></i></button>
+          <button type="submit" class="button is-primary" :disabled="contactFormValues.submitted">
+            <span v-if="contactFormValues.submitted" class="heart">
+              <span></span>
+            </span>
+            <span v-else>
+              Let's talk! <i class="fa fa-paper-plane"></i>
+            </span>
+          </button>
         </div>
       </form>
     </div>
@@ -35,11 +47,17 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'ContactForm',
   data() {
     return {
       contactFormValues: {
+        phone: {
+          value: '0it8hePl4n',
+          isFilled: true
+        },
         name: {
           value: '',
           isFilled: false,
@@ -55,6 +73,7 @@ export default {
           isFilled: false,
         },
         submitted: false,
+        hasErrors: false,
       },
     };
   },
@@ -62,18 +81,32 @@ export default {
     submit() {
       this.contactFormValues.submitted = true;
 
-      let name = this.contactFormValues.name.value;
-      let email = this.contactFormValues.email.value;
-      let message = this.contactFormValues.message.value;
+      let name = this.contactFormValues.name.value.trim();
+      let email = this.contactFormValues.email.value.trim();
+      let message = this.contactFormValues.message.value.trim();
+      let phone = this.contactFormValues.phone.value.trim();
 
-      if (name && email && message) {
-
+      if (name && email && message && phone) {
+        axios.post('http://lvh.me/mailer.php', { name, email, message, phone })
+          .then((response) => {
+            if (response.status === 200) {
+              this.contactFormValues.name.value = '';
+              this.contactFormValues.name.isFilled = false;
+              this.contactFormValues.email.value = '';
+              this.contactFormValues.email.isFilled = false;
+              this.contactFormValues.message.value = '';
+              this.contactFormValues.message.isFilled = false;
+              this.contactFormValues.submitted = false;
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       } else {
-
+        this.contactFormValues.hasErrors = true;
       }
     },
     checkFilled(field) {
-      console.log(field);
       if (field.value !== '') {
         field.isFilled = true;
       }
@@ -94,7 +127,7 @@ export default {
 
 .form-wrapper {
   padding: 2em 1em;
-  background :#f4f4f4;
+  background: #f4f4f4;
   color: $color;
   border-radius: 2px;
   @include box-shadow;
@@ -166,5 +199,105 @@ button {
   color: #f00;
   font-size: 0.8em;
   display: none;
+}
+
+.heart {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  -webkit-animation: heartbeat 1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  animation: heartbeat 1s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  width: 20px !important;
+  height: 20px !important;
+  -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+  transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+}
+
+.heart span {
+  display: block;
+  top: 6px;
+  left: 2px;
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.heart span:after,
+.heart span:before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 15px;
+  height: 15px;
+  background: #fff;
+}
+
+
+.heart span:before {
+  left: -14px;
+  border-radius: 50% 0 0 50%;
+}
+
+.heart span:after {
+  top: -14px;
+  border-radius: 50% 50% 0 0;
+}
+
+@keyframes heartbeat {
+  0% {
+    -webkit-transform: scale(0.85);
+    transform: scale(0.85);
+  }
+  5% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  39% {
+    -webkit-transform: scale(0.75);
+    transform: scale(0.75);
+  }
+  45% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  60% {
+    -webkit-transform: scale(0.85);
+    transform: scale(0.85);
+  }
+  100% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+}
+
+@-webkit-keyframes heartbeat {
+  0% {
+    -webkit-transform: scale(0.85);
+    transform: scale(0.85);
+  }
+  5% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  39% {
+    -webkit-transform: scale(0.75);
+    transform: scale(0.75);
+  }
+  45% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  60% {
+    -webkit-transform: scale(0.85);
+    transform: scale(0.85);
+  }
+  100% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
 }
 </style>

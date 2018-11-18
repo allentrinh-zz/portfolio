@@ -32,20 +32,19 @@
     <div class="section">
       <div class="container content">
         <h2 class="subtitle">Work History</h2>
-        <div class="columns">
-          <div class="column is-4">
+        <div class="columns is-desktop">
+          <div class="column is-4-desktop">
             <p>Starting off as a humble web designer, I quickly learned my love for user interface was only bested by my love for useful, functional tools.</p>
             <p>There is no greater user experience than using a tool that just works!</p>
             <p>I am currently exploring utilizing Vuejs and Nativescript to build apps.</p>
           </div>
-          <div class="column is-7 is-offset-1">
-
+          <div class="column is-7-desktop is-offset-1-desktop">
             <TimeLine/>
           </div>
         </div>
       </div>
     </div>
-    <div class="section">
+    <div class="recent-work section">
       <div class="container content">
         <h2 class="subtitle has-text-centered">Recent Work</h2>
         <div class="columns">
@@ -215,5 +214,11 @@ export default {
 .profile-picture {
   border-radius: 2px;
   @include box-shadow;
+}
+
+.recent-work {
+  img {
+    border-radius: 2px;
+  }
 }
 </style>
