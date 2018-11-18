@@ -111,6 +111,10 @@ export default {
           level: 75,
         },
         {
+          name: 'Shopify',
+          level: 55,
+        },
+        {
           name: 'PhotoShop',
           level: 60,
         },

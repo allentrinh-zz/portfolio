@@ -79,6 +79,7 @@ export default {
   position: relative;
   outline: 0;
   cursor: pointer;
+  transform: scale(0.8);
   &.active {
     span {
       &:first-child {
