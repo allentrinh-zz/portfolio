@@ -1,5 +1,5 @@
 <template>
-  <section class="hero has-text-centered is-medium" :style="{ backgroundImage: 'url(' + require('../assets/color-cloud.jpg') + ')' }">
+  <section class="hero has-text-centered is-large" :style="getBackgroundImage()">
     <div class="lines">
       <div class="line"></div>
       <div class="line"></div>
@@ -16,6 +16,10 @@
         </div>
       </div>
     </div>
+    <button class="auto-scroll"
+      @click="autoScroll()">
+      <i class="fa fa-chevron-down"></i>
+    </button>
   </section>
 </template>
 
@@ -24,6 +28,23 @@ export default {
   name: 'Hero',
   props: {
     heroContent: String,
+    image: String,
+  },
+  methods: {
+    getBackgroundImage() {
+      if (typeof this.image !== 'undefined') {
+        return `backgroundImage: url(${ require('../assets/' + this.image) })`;
+      } else {
+        return `backgroundImage: url(${ require('../assets/color-cloud.jpg') })`;
+      }
+    },
+    autoScroll() {
+      window.scrollTo({
+        'behavior': 'smooth',
+        'left': 0,
+        'top': this.$el.offsetHeight,
+      });
+    },
   },
   filters: {
     capitalize(str) {
@@ -34,7 +55,7 @@ export default {
     },
     cleanName(str) {
       return str.replace(/-/g, ' ');
-    }
+    },
   },
 };
 </script>
@@ -101,6 +122,10 @@ export default {
 
 .heading-container {
   position: relative;
+  padding-top: 50px;
+  @media (min-width: $screen-lg) {
+    padding-top: 0;
+  }
 }
 
 .title, .subtitle {
@@ -117,7 +142,7 @@ export default {
   opacity: 0.15;
   line-height: 1;
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -25%);
   @media (min-width: $screen-md) {
@@ -125,6 +150,31 @@ export default {
   }
   @media (min-width: $screen-lg) {
     font-size: 4em;
+    top: 0;
+  }
+}
+
+.auto-scroll {
+  display: none;
+  @media (min-width: $screen-lg) {
+    display: block;
+    position: absolute;
+    color: #fff;
+    background: transparent;
+    border: 0;
+    font-size: 3rem;
+    bottom: 1em;
+    left: 50%;
+    margin-left: -24px;
+    line-height: 1;
+    @include transition;
+    &:focus, &:active {
+      outline: 0;
+    }
+    &:hover {
+      transform: scale(1.25);
+      text-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
   }
 }
 </style>

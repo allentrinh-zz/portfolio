@@ -48,8 +48,14 @@ export default {
 .social {
   display: flex;
   justify-content: center;
+  margin: 0;
+  padding: 0;
   li {
     padding: 0 0.25em;
+    list-style: none;
+    + li {
+      margin: 0;
+    }
   }
   a {
     padding: 0.65em 0.25em 0.25em;
@@ -60,6 +66,7 @@ export default {
     display: block;
     width: 45px;
     height: 45px;
+    text-align: center;
     @include transition;
     &:hover {
       background: #fff;

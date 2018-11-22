@@ -1,6 +1,6 @@
 <template>
   <section class="about">
-    <Hero/>
+    <Hero image="arch.jpeg"/>
     <div class="section">
       <div class="container">
         <h2 class="subtitle is-3">Creative Web Designer &amp; Developer</h2>
