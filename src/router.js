@@ -5,6 +5,7 @@ import About from './views/About.vue';
 import Resume from './views/Resume.vue';
 import Work from './views/Work.vue';
 import Contact from './views/Contact.vue';
+import Four04 from './views/Four04.vue';
 
 Vue.use(Router);
 
@@ -39,6 +40,11 @@ export default new Router({
       path: '/contact',
       name: 'contact',
       component: Contact,
+    },
+    {
+      path: '*',
+      name: '404',
+      component: Four04,
     },
   ],
 });

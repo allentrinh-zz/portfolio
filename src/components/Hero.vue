@@ -24,6 +24,8 @@
 </template>
 
 <script>
+const defaultBackground = require('../assets/color-cloud.jpg');
+
 export default {
   name: 'Hero',
   props: {
@@ -33,16 +35,15 @@ export default {
   methods: {
     getBackgroundImage() {
       if (typeof this.image !== 'undefined') {
-        return `backgroundImage: url(${ require('../assets/' + this.image) })`;
-      } else {
-        return `backgroundImage: url(${ require('../assets/color-cloud.jpg') })`;
+        return `backgroundImage: url(${require(`../assets/${this.image}`)})`;
       }
+      return `backgroundImage: url(${defaultBackground})`;
     },
     autoScroll() {
       window.scrollTo({
-        'behavior': 'smooth',
-        'left': 0,
-        'top': this.$el.offsetHeight,
+        behavior: 'smooth',
+        left: 0,
+        top: this.$el.offsetHeight,
       });
     },
   },
@@ -50,7 +51,7 @@ export default {
     capitalize(str) {
       return str.toLowerCase()
         .split(' ')
-        .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
         .join(' ');
     },
     cleanName(str) {
@@ -167,6 +168,7 @@ export default {
     left: 50%;
     margin-left: -24px;
     line-height: 1;
+    cursor: pointer;
     @include transition;
     &:focus, &:active {
       outline: 0;

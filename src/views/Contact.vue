@@ -5,10 +5,10 @@
       <div class="container">
         <div class="columns">
           <div class="column">
-            <h2 class="subtitle is-spaced is-4">Let's work together</h2>
+            <h2 class="subtitle is-spaced is-5">Let's work together</h2>
             <p class="large-print">If you want to make something fancy but don't have the <em>know-how</em>, let's chat!</p>
             <hr>
-            <h4 class="subtitle is-2">Follow me!</h4>
+            <h4 class="subtitle is-5">Follow me!</h4>
             <SocialLinks/>
           </div>
           <div class="column">
@@ -55,7 +55,7 @@ h2, h4 {
 
 .large-print {
   color: #fff;
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 .social {

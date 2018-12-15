@@ -49,20 +49,28 @@
         <h2 class="subtitle has-text-centered">Recent Work</h2>
         <div class="columns">
           <div class="column">
-            <img src="https://placehold.it/400x250" alt="">
+            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
           </div>
           <div class="column">
-            <img src="https://placehold.it/400x250" alt="">
+            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
           </div>
           <div class="column">
-            <img src="https://placehold.it/400x250" alt="">
+            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
           </div>
           <div class="column">
-            <img src="https://placehold.it/400x250" alt="">
+            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
           </div>
           <div class="column">
-            <img src="https://placehold.it/400x250" alt="">
+            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="closer section has-text-centered">
+      <div class="columns">
+        <div class="column is-4 is-offset-4 content">
+          <p>I enjoyed every single working experience and I like to continue taking on new projects. Check out my previous projects or contact me to invite me for a next assignment.</p>
+          <router-link to="/contact" class="button ghost">Contact</router-link>
         </div>
       </div>
     </div>
@@ -209,6 +217,10 @@ export default {
   }
 }
 
+.porfolio-thumbnail {
+  width: 100%;
+}
+
 .pdf-link {
   i {
     margin-right: 8px
@@ -224,5 +236,9 @@ export default {
   img {
     border-radius: 2px;
   }
+}
+
+.ghost {
+  margin-top: 2em;
 }
 </style>

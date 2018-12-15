@@ -1,7 +1,6 @@
 <template>
   <nav id="mobile-navigation" :class="{active: mobileNavActive}">
     <ul class="nav">
-      <li><router-link to="/" @click.native="toggleNav">Home</router-link></li>
       <li><router-link to="/who-am-i" @click.native="toggleNav">Who Am I</router-link></li>
       <li><router-link to="/contact" @click.native="toggleNav">Contact</router-link></li>
     </ul>
