@@ -44,32 +44,10 @@
         </div>
       </div>
     </div>
-    <div class="recent-work section">
-      <div class="container content">
-        <h2 class="subtitle has-text-centered">Recent Work</h2>
-        <div class="columns">
-          <div class="column">
-            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
-          </div>
-          <div class="column">
-            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
-          </div>
-          <div class="column">
-            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
-          </div>
-          <div class="column">
-            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
-          </div>
-          <div class="column">
-            <img src="https://placehold.it/400x250" class="porfolio-thumbnail" alt="">
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="closer section has-text-centered">
       <div class="columns">
         <div class="column is-4 is-offset-4 content">
-          <p>I enjoyed every single working experience and I like to continue taking on new projects. Check out my previous projects or contact me to invite me for a next assignment.</p>
+          <p>I enjoy every project I work on as they bring on new experiences and growth. I invite you to bring me your ideas and we'll see how we can bring them to fruition!</p>
           <router-link to="/contact" class="button ghost">Contact</router-link>
         </div>
       </div>
@@ -230,12 +208,6 @@ export default {
 .profile-picture {
   border-radius: 2px;
   @include box-shadow;
-}
-
-.recent-work {
-  img {
-    border-radius: 2px;
-  }
 }
 
 .ghost {
