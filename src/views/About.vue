@@ -13,7 +13,7 @@
               <div class="column">
                 <p>Hi! I'm the Lead Developer at <a href="https://www.resiteonline.com" target="_blank">Resite Online</a> in Virginia Beach, VA. I have an obsession with clean, readable code and find satisfaction in micro animations that bring an application to life.</p>
                 <p>Designing useful tools makes me happy. <router-link to="/contact">Let's find something to work on together</router-link></p>
-                <a href="" class="button is-primary pdf-link"><i class="fa fa-file-pdf-o"></i> Download my resumé</a>
+                <!-- <a href="" class="button is-primary pdf-link"><i class="fa fa-file-pdf-o"></i> Download my resumé</a> -->
               </div>
             </div>
           </div>
