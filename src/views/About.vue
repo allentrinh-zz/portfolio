@@ -93,6 +93,10 @@ export default {
           level: 65,
         },
         {
+          name: 'Laravel',
+          level: 55,
+        },
+        {
           name: 'WordPress',
           level: 75,
         },
