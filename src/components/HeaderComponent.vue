@@ -3,7 +3,7 @@
     <div class="container is-fluid">
       <div class="columns is-mobile level-item">
         <div class="column is-narrow">
-          <router-link to="/" class="logo">Allen Trinh</router-link>
+          <router-link to="/" class="logo" @click="trackLogoClick();">Allen Trinh</router-link>
         </div>
         <div class="column has-text-right">
           <nav class="navbar is-hidden-touch">
@@ -38,6 +38,9 @@ export default {
     },
     trackMainNavigation(page) {
       this.$ga.event('Main Navigation', 'Click', page);
+    },
+    trackLogoClick() {
+      this.$ga.event('Logo', 'Click');
     },
   },
 };
