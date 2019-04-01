@@ -8,8 +8,8 @@
         <div class="column has-text-right">
           <nav class="navbar is-hidden-touch">
             <ul class="nav">
-              <li><router-link to="/who-am-i">Who Am I</router-link></li>
-              <li><router-link to="/contact">Contact</router-link></li>
+              <li><router-link to="/who-am-i" @click="trackMainNavigation('Who Am I');">Who Am I</router-link></li>
+              <li><router-link to="/contact" @click="trackMainNavigation('Contact');">Contact</router-link></li>
             </ul>
           </nav>
           <button
@@ -31,15 +31,13 @@ export default {
   props: {
     mobileNavActive: Boolean,
   },
-  data() {
-    return {
-
-    };
-  },
   methods: {
     toggleNav() {
       const isActive = !this.mobileNavActive;
       this.$emit('mobileNavActive', isActive); // pass mobile nav state back to App.vue
+    },
+    trackMainNavigation(page) {
+      this.$ga.event('Main Navigation', 'Click', page);
     },
   },
 };

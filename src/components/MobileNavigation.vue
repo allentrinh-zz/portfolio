@@ -1,8 +1,8 @@
 <template>
   <nav id="mobile-navigation" :class="{active: mobileNavActive}">
     <ul class="nav">
-      <li><router-link to="/who-am-i" @click.native="toggleNav">Who Am I</router-link></li>
-      <li><router-link to="/contact" @click.native="toggleNav">Contact</router-link></li>
+      <li><router-link to="/who-am-i" @click.native="toggleNav(); trackMobileNavigation('Who Am I');">Who Am I</router-link></li>
+      <li><router-link to="/contact" @click.native="toggleNav(); trackMobileNavigation('Contact');">Contact</router-link></li>
     </ul>
   </nav>
 </template>
@@ -17,6 +17,9 @@ export default {
     toggleNav() {
       const isActive = !this.mobileNavActive;
       this.$emit('mobileNavActive', isActive); // pass mobile nav state back to App.vue
+    },
+    trackMobileNavigation(page) {
+      this.$ga.event('Mobile Navigation', 'Click', page);
     },
   },
 };
