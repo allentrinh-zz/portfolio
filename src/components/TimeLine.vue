@@ -35,7 +35,7 @@ export default {
           company: 'Dominion Enterprises',
           url: 'https://www.dominionenterprises.com',
           position: 'Web Designer',
-          description: 'Transitioning from a broad spectrum of customers to a more focused group, I found growth in my own abilities here for marketing. The target were power sports, and the clients were retailers.',
+          description: 'Transitioning from a broad spectrum of customers to a more focused group, I found growth in my own abilities here for marketing. The targets were power sports and the clients were retailers.',
         },
         {
           year: 2012,
