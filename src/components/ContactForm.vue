@@ -59,7 +59,7 @@ export default {
       contactFormValues: {
         phone: {
           value: '0it8hePl4n',
-          isFilled: true
+          isFilled: true,
         },
         name: {
           value: '',
@@ -85,13 +85,15 @@ export default {
     submit() {
       this.contactFormValues.submitted = true;
 
-      let name = this.contactFormValues.name.value.trim();
-      let email = this.contactFormValues.email.value.trim();
-      let message = this.contactFormValues.message.value.trim();
-      let phone = this.contactFormValues.phone.value.trim();
+      const name = this.contactFormValues.name.value.trim();
+      const email = this.contactFormValues.email.value.trim();
+      const message = this.contactFormValues.message.value.trim();
+      const phone = this.contactFormValues.phone.value.trim();
 
       if (name && email && message && phone) {
-        axios.post('http://lvh.me/mailer.php', { name, email, message, phone })
+        axios.post('http://lvh.me/mailer.php', {
+          name, email, message, phone,
+        })
           .then((response) => {
             if (response.status === 200) {
               this.resetForm();
@@ -111,8 +113,7 @@ export default {
       this.contactFormValues.hasSuccess = false;
       if (field.value !== '') {
         field.isFilled = true;
-      }
-      else {
+      } else {
         field.isFilled = false;
       }
     },

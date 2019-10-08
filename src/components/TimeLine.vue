@@ -24,6 +24,13 @@ export default {
     return {
       items: [
         {
+          year: 2019,
+          company: 'Resite Online',
+          url: 'https://www.resiteonline.com',
+          position: 'Technical Team Lead',
+          description: 'True passion and growth in my career has driven me to evolve my skills personally, but it has also given me the greater gift of leading others on their own paths while still maintaining growth in my own career.',
+        },
+        {
           year: 2014,
           company: 'Resite Online',
           url: 'https://www.resiteonline.com',

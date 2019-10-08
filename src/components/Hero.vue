@@ -1,5 +1,5 @@
 <template>
-  <section class="hero has-text-centered is-large" :style="getBackgroundImage()">
+  <section :class="'hero has-text-centered ' + getFullSizeClass()" :style="getBackgroundImage()">
     <div class="lines">
       <div class="line"></div>
       <div class="line"></div>
@@ -13,10 +13,13 @@
           <div class="duped-headings">
             <p>{{ this.$route.name | cleanName | capitalize }}</p>
           </div>
+          <div v-if="hasHeroContent" class="hero-content">
+            <slot name="heroContent" />
+          </div>
         </div>
       </div>
     </div>
-    <button class="auto-scroll"
+    <button v-if="!hideArrow" class="auto-scroll"
       @click="autoScroll()">
       <i class="fa fa-chevron-down"></i>
     </button>
@@ -29,10 +32,20 @@ const defaultBackground = require('../assets/color-cloud.jpg');
 export default {
   name: 'Hero',
   props: {
-    heroContent: String,
     image: String,
+    isFullHeight: {
+      type: Boolean,
+      value: false,
+    },
+    hideArrow: {
+      type: Boolean,
+      value: false,
+    },
   },
   methods: {
+    getFullSizeClass() {
+      return this.isFullHeight ? 'is-fullheight' : 'is-large';
+    },
     getBackgroundImage() {
       if (typeof this.image !== 'undefined') {
         return `backgroundImage: url(${require(`../assets/${this.image}`)})`;
@@ -45,6 +58,11 @@ export default {
         left: 0,
         top: this.$el.offsetHeight,
       });
+    },
+  },
+  computed: {
+    hasHeroContent() {
+      return this.$slots.heroContent;
     },
   },
   filters: {
@@ -177,6 +195,16 @@ export default {
       transform: scale(1.25);
       text-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
     }
+  }
+}
+
+.hero-content {
+  color: #fff;
+  font-size: 1.85rem;
+  font-weight: 100;
+  font-style: italic;
+  a {
+    text-decoration: underline;
   }
 }
 </style>

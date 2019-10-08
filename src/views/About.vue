@@ -19,7 +19,7 @@
           <div class="column">
             <h2 class="subtitle is-3">Technologies Used</h2>
             <p class="mb-1">My curiosity for web technologies has led me to experiment with many different languages, frameworks, and workflows.</p>
-            <p class="tech" v-for="tech in techUsed">{{ tech }}</p>
+            <p class="tech" v-for="tech in techUsed" :key=tech>{{ tech }}</p>
           </div>
         </div>
       </div>
