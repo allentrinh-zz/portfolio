@@ -11,7 +11,7 @@
                 <img :src="require('../assets/allen-trinh.png')" class="profile-picture" alt="Hi, I'm Allen">
               </div>
               <div class="column">
-                <p>Hi! I'm the Lead Developer at <a href="https://www.resiteonline.com" target="_blank">Resite Online</a> in Virginia Beach, VA. I have an obsession with clean, readable code and find satisfaction in micro animations that bring an application to life.</p>
+                <p>Hi! I'm the Engineering Manager at <a href="https://www.thinkresite.com" target="_blank">Resite</a> in Virginia Beach, VA. I have an obsession with clean, readable code and find satisfaction in micro animations that bring an application to life.</p>
                 <p>Designing useful tools makes me happy. <router-link to="/contact">Let's find something to work on together</router-link></p>
               </div>
             </div>
@@ -72,7 +72,7 @@ export default {
         'gulpjs',
         'linux',
         'react',
-        'vuejs',
+        'vuejs/nuxt',
         'laravel',
         'wordpress',
         'shopify',

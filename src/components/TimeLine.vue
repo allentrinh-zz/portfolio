@@ -25,15 +25,15 @@ export default {
       items: [
         {
           year: 2019,
-          company: 'Resite Online',
-          url: 'https://www.resiteonline.com',
-          position: 'Technical Team Lead',
-          description: 'True passion and growth in my career has driven me to evolve my skills personally, but it has also given me the greater gift of leading others on their own paths while still maintaining growth in my own career.',
+          company: 'Resite',
+          url: 'https://www.thinkresite.com',
+          position: 'Engineering Manager',
+          description: 'True passion and growth in my career has driven me to evolve my skills personally, but it has also given me the greater gift of leading others on their own paths while still maintaining personal growth.',
         },
         {
           year: 2014,
-          company: 'Resite Online',
-          url: 'https://www.resiteonline.com',
+          company: 'Resite',
+          url: 'https://www.thinkresite.com',
           position: 'Lead Developer',
           description: 'Joining a team of "many hats", I encountered challenges that only propelled my own abilities for problem solving beyond design and development. I discovered a true love for marketing. Along side marketing, I discovered true passion for software development and the joys of optimization.',
         },
